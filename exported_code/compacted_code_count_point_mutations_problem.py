@@ -1,4 +1,3 @@
-
 class HammingDistance:
 
     def __init__(self, first_data_to_evaluate, second_data_to_evaluate):
@@ -9,7 +8,8 @@ class HammingDistance:
     def calculate_hamming_distance(self):
         try:
             if len(self.first_data_to_evaluate) != len(self.second_data_to_evaluate):
-                raise ValueError("To calculate the Hamming Distance is need to send two string with equal length.")
+                raise ValueError(
+                    "To calculate the Hamming Distance is need to send two string with equal length.")
         except ValueError:
             exit('Could not complete Hamming Distance request')
 
@@ -23,3 +23,13 @@ class HammingDistance:
             my_count -= 1
 
         return self.hamming_distance_result
+
+
+data_input = open('data/counting_point_mutations/rosalind_hamming.txt', "r")
+separate_data = [data.strip() for data in data_input.readlines()]
+data_input.close()
+hamming_distance_information_pack = HammingDistance(
+    separate_data[0], separate_data[1])
+if __name__ == '__main__':
+    hamming_distance_result = hamming_distance_information_pack.calculate_hamming_distance()
+    print(hamming_distance_result)
